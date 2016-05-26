@@ -26,13 +26,13 @@
         <input
           type="text"
           class="form-control"
-          name="comment"
           v-model="timeEntry.comment"
-          placeHolder="Comment">
+          placehlder="Comment"
+        />
       </div>
     </div>
-    <button class="btn btn-primary" @click="save()">Save</button>
-    <button class="btn btn-danger" v-link=""/time-entries"">Cancel</button>
+    <button class="btn btn-primary" @click="addTimeEntry()">Save</button>
+    <button class="btn btn-danger" v-link="'/time-entries'">Cancel</button>
     <hr>
   </div>
 </template>
@@ -53,11 +53,11 @@
       }
     },
     methods: {
-      // takes user input data and dispatches it out of component for others to access
-      save () {
+      // takes user input data and pushes event to app.vue to update entries
+      addTimeEntry () {
+        // need to do this so default info above is added to final sent object
         let timeEntry = this.timeEntry
-        this.$dispatch('timeUpdate', timeEntry)
-        this.timeEntry = {}
+        this.$dispatch('addTimeEntry', timeEntry)
       }
     }
   }

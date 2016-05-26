@@ -1,0 +1,34 @@
+.panel-weather img{
+	width: 100%;
+	margin-top: -10px;
+}
+.panel-weather h6{
+	font-size: 1.2em;
+}
+.panel-weather h1{
+	font-size: 5em;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.panel-weather h3{
+	margin-bottom: 2px;
+	font-size: 1.4em;
+	margin-top: 0px;
+}
+.panel-weather h5{
+	margin-top: 0px;
+	margin-bottom: 2px;
+	font-size: 1.1em;
+}
+.panel-weather h4{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 1.5em;
+}
+.panel-weather span{
+	font-size: 1.8em;
+}
+
+.panel-date h2{
+	margin-top: 10px;
+}
