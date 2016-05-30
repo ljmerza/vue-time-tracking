@@ -22,12 +22,12 @@
       <div class="row">
         <!--total time panel-->
         <div class="col-xs-3">
-          <weather-view :coordinates:coordinates></weather-view>
+          <weather-view :coordinates='coordinates'></weather-view>
         </div><!--total time panel-->
 
         <!--router element-->
         <div class="col-xs-9 little-padd">
-          <router-view></router-view>
+          <router-view :coordinates='coordinates'></router-view>
         </div><!--router element-->
       </div>
     </div><!--container for time tracker-->
@@ -54,20 +54,25 @@
         navigator.geolocation.getCurrentPosition( (position) => {
           this.coordinates.lat = position.coords.latitude
           this.coordinates.long = position.coords.longitude
-          this.$broadcast('getWeatherEvent', this.coordinates)
         })
       }
-    },
-    // when component created get coordinates
-    created () {
-      this.getCoordinates()
     },
     events: {
       // get coordinates when event is fired from another component
       getCoordinatesEvent () {
         this.getCoordinates()
       }
+    },
+    ready () {
+      this.getCoordinates()
+    },
+    watchers: {
+      'coordinates': (val, oldVal) => {
+        console.log('watcher')
+        this.$broadcast('getWeatherEvent')
+      }
     }
+
   }
 </script>
 

@@ -16,7 +16,7 @@
 						<!--show city if data collected else show button to manually get coordinates-->
 						<h6 v-show=weather.city>{{ weather.city }} <i class="fa fa-cog" aria-hidden="true"></i></h6>
 						<div v-show=!weather.city>
-							<h6 >To get weather data, allow location</h6>
+							<h6 >To get weather data allow location</h6>
 							<button class="btn btn-default-btn-lg" @click='getCoordinatesFromParent()'>Here</button>
 						</div>
 					</div>
@@ -54,7 +54,6 @@
 			</div>
 		</div>
 	</div>
-	</div>
 	
 </template>
 
@@ -76,10 +75,10 @@
 					description: '',
 					wind: 0 ,
 					weatherImgURL: ''
-				},
-				coordinates: {
-					lat: 0,
-					long: 0
+				// },
+				// coordinates: {
+				// 	lat: 0,
+				// 	long: 0
 				}
 			}
 		},
@@ -88,6 +87,9 @@
 			parseInt (val) {
 				return parseInt(val)
 			}
+		},
+		props: {
+			coordinates: Object
 		},
 		methods: {
 			// call openWeatherMap API and store data in component variables
@@ -113,11 +115,8 @@
 				this.$dispatch('getCoordinatesEvent')
 			}
 		},
-		// get weather based off coordinates sent from a component event
 		events: {
-			getWeatherEvent (coord) {
-				this.coordinates.lat = coord.lat
-				this.coordinates.long = coord.long
+			getWeatherEvent () {
 				this.getWeather()
 			}
 		}
